@@ -33,7 +33,79 @@
         <div class="box-right">
             <div class="instr">ИНСТРУКЦИЯ:</div>
             <br>
-            <button>АВТОРИЗАЦИЯ</button>                 
+            <button>АВТОРИЗАЦИЯ</button>
+            <script>// Находим кнопки
+             // Находим кнопки
+const authButtons = document.querySelectorAll('.box-right button');
+
+// Добавляем обработчик событий на клик
+authButtons.forEach(button => {
+button.addEventListener('click', () => {
+// Делаем элемент с фоном прозрачным
+const main = document.querySelector('main');
+main.style.opacity = '0.5';
+
+// Создаем элемент с прямоугольным окном авторизации
+const authWindow = document.createElement('div');
+authWindow.classList.add('auth-window');
+
+// Добавляем кнопку закрытия
+const closeButton = document.createElement('button');
+closeButton.textContent = '✕';
+closeButton.style.position = 'absolute';
+closeButton.style.top = '10px';
+closeButton.style.right = '10px';
+closeButton.style.border = 'none';
+closeButton.style.background = 'none';
+closeButton.style.fontSize = '20px';
+closeButton.style.cursor = 'pointer';
+authWindow.appendChild(closeButton);
+
+// Добавляем на созданный элемент необходимые элементы для авторизации
+const loginInput = document.createElement('input');
+loginInput.setAttribute('type', 'text');
+loginInput.setAttribute('placeholder', 'Логин');
+authWindow.appendChild(loginInput);
+
+const passwordInput = document.createElement('input');
+passwordInput.setAttribute('type', 'password');
+passwordInput.setAttribute('placeholder', 'Пароль');
+authWindow.appendChild(passwordInput);
+
+const submitButton = document.createElement('button');
+submitButton.textContent = 'Войти';
+authWindow.appendChild(submitButton);
+
+// Устанавливаем для созданного элемента CSS свойства для отображения прямоугольного окна авторизации
+authWindow.style.position = 'fixed';
+authWindow.style.top = '50%';
+authWindow.style.left = '50%';
+authWindow.style.width = '300px';
+authWindow.style.height = '200px';
+authWindow.style.backgroundColor = '#fff';
+authWindow.style.border = '2px solid #000';
+authWindow.style.boxSizing = 'border-box';
+authWindow.style.padding = '20px';
+authWindow.style.transform = 'translate(-50%, -50%)';
+authWindow.style.zIndex = '999';
+
+// Добавляем созданный элемент на страницу
+document.body.appendChild(authWindow);
+
+// Добавляем обработчик событий на клик по кнопке закрытия
+closeButton.addEventListener('click', () => {
+  // Удаляем элемент авторизации
+  authWindow.remove();
+  // Возвращаем прозрачность основному элементу
+  main.style.opacity = '1';
+});
+});
+});
+
+
+
+
+              </script>                 
             <button>РЕГИСТРАЦИЯ</button>
         </div>
       </footer>
